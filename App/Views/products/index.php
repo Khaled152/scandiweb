@@ -55,7 +55,7 @@
                                 require_once("UTILITIES/productTypeMaker.php");
 
                                 test($row['type'] , $row);
-                               
+
                             ?>
 
                         </div>

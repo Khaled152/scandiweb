@@ -1,9 +1,6 @@
 <?php
 
-
-
-
- function makebook( $row){
+function makebook( $row){
     return '<p>Weight: ' . $row['weight'] . ' KG</p>';
 }
 
@@ -18,8 +15,7 @@ function makefurniture($row){
 
 function test($type , $row){
     $funcName = "make".$type;
-    var_dump($funcName);
-    echo  call_user_func($funcName($row));
+    echo  call_user_func($funcName,$row);
 }
 
 
