@@ -6,11 +6,14 @@
 class Products
 {
     private $db;
+
+    private $conn;
     private $table = "products";
 
     public function __construct()
     {
         $this->db = new DB();
+        
     }
 
     public function getAllProducts()

@@ -37,6 +37,9 @@
         <div class="container">
             <div class="row">
                 <!--cards-->
+
+
+            
                 <?php foreach($products as $row):  ?>
                 <div class="col-md-3  cards" >
                     <div class="card card-body card-style" >
@@ -49,14 +52,10 @@
                             <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo $row['price']; ?> $</h6>
                             <h6 class="card-subtitle mb-2 text-body-secondary" ><?php echo $row['type']; ?></h6>
                             <?php
+                                require_once("UTILITIES/productTypeMaker.php");
 
-                                if ($row['type'] == 'book') {
-                                echo '<p>Weight: ' . $row['weight'] . ' KG</p>';
-                                    } else if ($row['type'] == 'DVD') {
-                                echo '<p>Size: ' . $row['size'] . ' MB</p>';
-                                    } else if ($row['type'] == 'furniture') {
-                                        echo '<p style="font-size: 14px;">Dimensions: ' . $row['height'] . ' x ' . $row['width'] . ' x ' . $row['length'] . '</p>';
-                                    }
+                                test($row['type'] , $row);
+                               
                             ?>
 
                         </div>
