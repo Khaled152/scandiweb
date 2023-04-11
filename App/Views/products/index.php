@@ -22,7 +22,7 @@
                 <div class="col-md-6  " id="buttons" >
                     
                     <button type="button" class="btn btn-secondary" id="add" onclick="window.location.href='<?php url('products/add'); ?>'">ADD</button>
-                    <button type="button" class="btn btn-danger" id="delete" onclick="window.location.href='<?php url('products/delete'); ?>'">MASS DELETE</button>
+                    <button type="button" class="btn btn-danger"  id="delete-button"  onclick="window.location.href='<?php url('products/delete'); ?>'">MASS DELETE</button>
                     <button onclick="getCheckboxValues()">Get Values</button>
 
 
@@ -45,7 +45,7 @@
                 <div class="col-md-3  cards" >
                     <div class="card card-body card-style" >
                         <div class="form-check checkbox" >
-                            <input class="form-check-input" type="checkbox" name="product_ids[]" value="6"  id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" name="product_ids[]"  id='<?php echo $row['id']; ?>'>
                         </div>
                         <div class="card-body">
                             <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo $row['sku']; ?></h6>
@@ -82,19 +82,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
-        <script>
-            function getCheckboxValues() {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-         const checkboxValues = [];
-
-  checkboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-        console.log(checkboxValues.push(checkbox.value));
-    }
-  });
-
-}
-        </script>
+ 
 </body>
 
 </html>

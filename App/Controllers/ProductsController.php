@@ -118,7 +118,7 @@ class ProductsController extends Controller
     
     public function delete($id)
     {
-        if($this->conn->deleteProduct($id))
+        if($this->conn->deleteProduct($id) && $selectedRows = $_POST["selectedRows"])
         {
             $data['success'] = "Product Have Been Deleted";
             return  header('Location:http://localhost/scandiweb/products/index');
@@ -131,15 +131,7 @@ class ProductsController extends Controller
             return header('Location: http://localhost/scandiweb/products/index');
         }
 
-
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    foreach ($_POST['product_ids'] as $product_id) {
-        $product_controller->delete($product_id);
     }
 
-    header('Location: index.php');
-}
-    }
+
 }

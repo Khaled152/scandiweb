@@ -9,6 +9,7 @@ class Products
 
     private $conn;
     private $table = "products";
+    
 
     public function __construct()
     {
@@ -38,7 +39,7 @@ class Products
      * @param int $id => id of product 
      */
     public function deleteProduct($id)
-    {
+    {   
         $delete = $this->db->connect()->where('id',$id);
         return $delete->delete($this->table);
     }
