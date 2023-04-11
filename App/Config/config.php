@@ -1,7 +1,8 @@
 <?php 
 
 // define pase url for the project 
-define("BURL","http://scandiweb.local/");
+define("BURL","http://localhost:80/scandiweb/");
+define("ASSETS","http://localhost:80/scandiweb/public/assets/");
 
 
 /**

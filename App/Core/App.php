@@ -29,15 +29,16 @@ class App
     private function prepareURL($url)
     {
         $url = trim($url,"/");
+        
         if(!empty($url))
         {
             $url = explode('/',$url);
             // define controller 
-            $this->controller = isset($url[0]) ? ucwords($url[0])."Controller":"HomeController";
+            $this->controller = isset($url[1]) ? ucwords($url[1])."Controller":"ProductsController";
             // define method 
-            $this->action = isset($url[1]) ? $url[1]:"index";
-            // define parameters 
-            unset($url[0],$url[1]);
+            $this->action = isset($url[2]) ? $url[2]:"index";
+           // define parameters 
+            unset($url[1],$url[2]);
 
             $this->params = !empty($url) ? array_values($url) : [];
         }

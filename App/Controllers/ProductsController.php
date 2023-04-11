@@ -57,7 +57,7 @@ class ProductsController extends Controller
             if($this->conn->insertProducts($dataInsert))
             {
                 $data['success'] = "Data Added Successfully";
-                return  header('Location: http://scandiweb.local/products/index');
+                return  header('Location: http://localhost/scandiweb/products/index');
             }
             else 
             {
@@ -65,7 +65,7 @@ class ProductsController extends Controller
                 return $this->view('products/add',$data);
             }
         }
-        return  header('Location: http://scandiweb.local/products/index');
+        return  header('Location: http://localhost/scandiweb/products/index');
     }
 
 
@@ -121,14 +121,14 @@ class ProductsController extends Controller
         if($this->conn->deleteProduct($id))
         {
             $data['success'] = "Product Have Been Deleted";
-            return  header('Location: http://test2.local/products/index');
+            return  header('Location:http://localhost/scandiweb/products/index');
             
             
         }
         else 
         {
             $data['error'] = "Error";
-            return header('Location: http://test2.local/products/index');
+            return header('Location: http://localhost/scandiweb/products/index');
         }
 
 

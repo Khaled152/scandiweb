@@ -7,7 +7,7 @@
     <title>Product add</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link href="<?php echo BURL.'assets/css/style.css'; ?>" rel="stylesheet" type="text/css">
+    <link href="<?php echo ASSETS.'css/style.css'; ?>" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -20,8 +20,8 @@
                 </div>
                 <div class="col-md-6  " id="buttons">
 
-                    <button type="button" class="btn btn-success" id="SAVE">SAVE</button>
-                    <button type="button" class="btn btn-secondary" id="Cancel">Cancel</button>
+                    <button form="myform" type="submit" name="submit" class="btn btn-success">SAVE</button>
+                    <button type="button" class="btn btn-secondary" id="Cancel"  onclick="window.location.href='<?php url('products/index'); ?>';">Cancel</button>
                 </div>
             </div>
             <hr>
@@ -33,7 +33,7 @@
     <main>
         <div class="container">
             <div class="row">
-                <form class="p-5 border mb-5" method="POST" action="<?php url('products/store'); ?>">
+                <form class="p-5 border mb-5" id="myform" method="POST" action="<?php url('products/store'); ?>">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text"  name="name" class="form-control" id="name" >
@@ -91,7 +91,6 @@
 
                     </div>
                     
-                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                 </form>
 
             </div>
@@ -123,7 +122,7 @@
 			}
 		});
     </script>
-    <script src=" <?php echo BURL.'assets/js/script.js'; ?>"></script>
+    <script src=" <?php echo ASSETS.'js/script.js'; ?>"></script>
 
 
 </body>
