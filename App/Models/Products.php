@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 
@@ -9,17 +9,16 @@ class Products
 
     private $conn;
     private $table = "products";
-    
+
 
     public function __construct()
     {
         $this->db = new DB();
-        
     }
 
     public function getAllProducts()
     {
-        
+
         return $this->db->connect()->get($this->table);
     }
 
@@ -30,7 +29,8 @@ class Products
      */
     public function insertProducts($data)
     {
-        return $this->db->connect()->insert($this->table,$data);
+
+        return $this->db->connect()->insert($this->table, $data);
     }
 
 
@@ -39,9 +39,21 @@ class Products
      * @param int $id => id of product 
      */
     public function deleteProduct($id)
-    {   
-        $delete = $this->db->connect()->where('id',$id);
+    {
+        $delete = $this->db->connect()->where('id', $id);
         return $delete->delete($this->table);
+    }
+
+    public function deleteManyProducts($ids)
+    {
+
+        $youssef =  new mysqli("localhost", "root", "", "Scandiweb");
+
+
+        if ($youssef->query("DELETE FROM products where id IN (" . $ids . ")"))
+            return true;
+        else
+            return false;
     }
 
 
@@ -57,9 +69,9 @@ class Products
         return $product->get($this->table);
     }
 
-    public function updateProduct($id,$data)
+    public function updateProduct($id, $data)
     {
         $product = $this->db->connect()->where('id', $id);
-        return $product->update($this->table,$data);
+        return $product->update($this->table, $data);
     }
 }
