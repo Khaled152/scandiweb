@@ -1,105 +1,65 @@
 <?php
 
-
-
-class App
-{
-    // controller
-    protected $controller = "HomeController";
-    // method 
-    protected $action = "index";
-    // params 
+class App{
+    protected $controller = 'home';
+    protected $method = 'index';
     protected $params = [];
 
-    public function __construct()
-    {
-        $this->prepareURL($_SERVER['REQUEST_URI']);
-        // invoke controller and method
-        $this->render();
-    }
+    public function __construct(){
 
+        $url=$this->parseUrl();
+        
+        if(!isset($url[0])){
+            
+            $url[0]='home';
 
-
-    /**
-     * extract controller and method and all parameters
-     * @param string $url -> request from url path 
-     * @return 
-     */
-    private function prepareURL($url)
-    {
-        $url = trim($url, "/");
-        $splitUrl = explode("?", $url);
-        $url = $splitUrl[0];
-        $quary = [];
-        if (isset($splitUrl[1]))
-            $quary = explode("&", $splitUrl[1]);
-
-
-
-
-        if (!empty($url)) {
-            $url = explode('/', $url);
-            // define controller 
-            $this->controller = isset($url[1]) ? ucwords($url[1]) . "Controller" : "ProductsController";
-            // define method 
-            $this->action = isset($url[2]) ? $url[2] : "index";
-            // define parameters 
-
-
-
-            unset($url[0], $url[1], $url[2]);
-
-
-            $this->params = !empty($url) ? array_values($url) : [];
         }
-    }
+        if(file_exists(dirname(__DIR__).'/Controllers/'.$url[0].'.php')){
+            
+            $this->controller = $url[0] ;
+        
+            unset($url[0]);
+        }
 
 
 
-    /**
-     * render controller and method and send parameters 
-     * @return function 
-     */
+        require_once(dirname(__DIR__).'/Controllers/'. $this->controller.'.php');
+        $this->controller = new $this->controller;
+        
+        if(!isset($url[1])){
+            
+            $url[1]='index';
 
-    private function render()
-    {
-        // chaeck if controller is exist
+        }
 
-
-        if (class_exists($this->controller)) {
-            $controller = new $this->controller;
-            // check if methos is exist
-            if (method_exists($controller, $this->action)) {
-
-                call_user_func_array([$controller, $this->action], $this->params);
-            } else {
-
-                echo "Method : " . $this->action . " does not Existsssssssssssssssssssssssssssss";
-
-                //new View('error');
+        if(isset($url[1])){
+            if(method_exists( $this->controller,$url[1])){
+                $this->method = $url[1];
+                unset($url[1]);
             }
-        } else {
-            // echo "Class : ".$this->controller." Not Found";
-            new View('error');
+          
+            $this->params = $url ? array_values($url) : [];
+           
+           
+                call_user_func_array([$this->controller,$this->method],[$this->params]);
+        }
+
+
+    }
+
+
+
+
+
+
+    public function parseUrl(){
+        if(isset($_GET['url'])){
+          //  echo $_GET['url'];
+        return $url=explode('/',filter_var(rtrim($_GET['url'],'/'),FILTER_SANITIZE_URL));
+
         }
     }
+
+
+
 }
-
-
-
-
-
-// if(file_exists(CONTROLLERS.$this->controller.'.php'))
-// {
-//     if(class_exists($this->controller))
-//     {
-//         if(method_exists($this->controller,$this->action))
-//         {
-//             call_user_func_array([$this->controller,$this->action],$this->params);
-//         }
-//     }
-// }
-// else 
-// {
-//     echo $this->controller." Not Found";
-// }  
