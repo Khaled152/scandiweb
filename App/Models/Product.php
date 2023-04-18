@@ -21,7 +21,7 @@ class Product {
     }
 
     public function create($data) {
-            $test="INSERT INTO products (name,sku, price, type,weight, size,height,width,length) VALUES (:name , :sku , :price , :type ,:weight,:size,:height,:width,:length)";
+            $test="INSERT INTO products (name, sku, price, type, weight, size, height, width, length) VALUES (:name , :sku , :price , :type , :weight, :size,:height, :width, :length)";
             
             
 

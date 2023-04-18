@@ -26,11 +26,12 @@ class Home extends Controller{
       try{
         
       $id = $this->model->create($_POST);
+ 
       echo '<script>window.location.href="/"</script>';
     }
   catch(Exception $e){
-
-        echo '<script>window.location.href="/"</script>';
+      echo $e;
+      echo '<script>window.location.href="/"</script>';
 
   }
   
@@ -43,7 +44,7 @@ class Home extends Controller{
     $this->model->delete($id);
     //echo "jkhsdkjashdkjashdkhasdjkgjhfgasdjfhglaksjdfhlkasdjhfgjhasdkfl";
    
-    echo '<script>window.location.href="/"</script>';
+    echo '<script>window.location.href="/scandiweb/"</script>';
    // header('Location: /index');   
 
   }

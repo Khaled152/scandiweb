@@ -7,8 +7,10 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link href="/public/css/style.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>public/css/style.css" rel="stylesheet" type="text/css">
 </head>
+
+
 
 <body>
     <!--Start header-->
@@ -41,7 +43,7 @@
                 <div class="col-md-3  cards">
                     <div class="card card-body card-style">
                         <div class="form-check checkbox">
-                            <input class="form-check-input delet-checkbox " type="checkbox" id='<?=$row['id']?>'>
+                            <input class="form-check-input delete-checkbox " type="checkbox" id='<?=$row['id']?>'>
                         </div>
                         <div class="card-body">
                             <h6 class="card-subtitle mb-2 text-body-secondary">
@@ -89,7 +91,7 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="/public/js/delete.js"></script>
+        <script src="<?php echo (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>public/js/delete.js"></script>
 
 </body>
 

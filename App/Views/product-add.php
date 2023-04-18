@@ -3,7 +3,7 @@
 
 
 <head>
-    <!-- Required meta tags -->
+    <!-- checkable meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -14,15 +14,15 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="/public/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../public/css/style.css" rel="stylesheet" type="text/css">
     <title>Scandiweb test Assignment</title>
 
 </head>
 
 <body>
     <div class="container">
-        <form id="product_form" action="store" method="POST">
-            <div class="row my-5">
+
+    <div class="row my-5">
                 <div class="col-md-6 text-left">
                     <h1>Product Add</h1>
                 </div>
@@ -30,17 +30,19 @@
                     <a href="/" name="Cancel" class="btn btn-secondary">
                         CANCEL
                     </a>
-                    <button type="submit" value="insert" name="Save" class="btn btn-primary" >
+                    <button id="saveBtn"  class="btn btn-primary" >
                         SAVE
                     </Button>
                 </div>
             </div>
+        <form id="product_form" action="<?php echo (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]";?>/scandiweb/home/store" method="POST">
+       
             <hr style="width:100%">
             </br>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">SKU</label>
                 <div class="col-sm-3">
-                    <input name="sku" type="varchar" class="form-control" id="sku" >
+                    <input name="sku" type="varchar" class="form-control" id="sku" checkable>
                     
                     <span class="error "></span>
                 </div>
@@ -48,20 +50,20 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-3">
-                    <input name="name" type="varchar" class="form-control" id="name">
+                    <input name="name" type="varchar" class="form-control" id="name" checkable>
             <span class="error"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Price ($)</label>
                 <div class="col-sm-3">
-                    <input name="price" type="number" class="form-control" id="price">
+                    <input name="price" type="number" class="form-control" id="price" checkable>
             <span class="error"></span>
                 </div>
             </div>
             <div class="dropdown">
                 <label class="col-sm-2 col-form-label">Type Switcher</label>
-                <select class="dropdown-toggle" type="button" id="productType" name="productType" style="width: 300px;" onchange="getCall(this.value);">
+                <select class="dropdown-toggle" type="button" id="productType" name="type" style="width: 300px;" onchange="getCall(this.value);" checkable>
                     <option value="">Type Switcher</option>
                     <option value="DVD">DVD-Disc</option>
                     <option value="Furniture">Furniture</option>
@@ -75,7 +77,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Size (MB)</label>
                     <div class="col-sm-3">
-                        <input name="size" type="number" class="form-control" id="size"><br>
+                        <input name="size" type="number" class="form-control" id="size" checkable><br>
                         <strong>Please, provide disc space in MB</strong>
                     </div>
                 </div>
@@ -84,19 +86,19 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Height (CM)</label>
                     <div class="col-sm-3">
-                        <input name="height" type="number" class="form-control" id="height">
+                        <input name="height" type="number" class="form-control" id="height" checkable>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Width (CM)</label>
                     <div class="col-sm-3">
-                        <input name="width" type="number" class="form-control" id="width">
+                        <input name="width" type="number" class="form-control" id="width" checkable>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Length (CM)</label>
                     <div class="col-sm-3">
-                        <input name="length" type="number" class="form-control" id="length"><br>
+                        <input name="length" type="number" class="form-control" id="length" checkable><br>
                         <strong>Please, provide dimensions</strong>
                     </div><br>
                 </div>
@@ -105,7 +107,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Weight (KG)</label>
                     <div class="col-sm-3">
-                        <input name="weight" type="number" class="form-control" id="weight"><br>
+                        <input name="weight" type="number" class="form-control" id="weight" checkable><br>
                         <strong>Please, provide weight in KG</strong>
                     </div><br>
                 </div>
@@ -141,11 +143,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-        <script src="/public/js/script.js"></script>
+        <script src="../public/js/script.js"></script>
        
 
 
 
 </body>
+
+
 
 </html>
